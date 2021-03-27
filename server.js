@@ -22,6 +22,9 @@ app.use(express.json());
 // Statically serve public directory to client
 app.use(express.static('public'));
 
+// Import HTML and API routes
+require('./routes/html_routes')(app);
+
 // Connect to database and start server if connection is established
 mongoose
   .connect(process.env.MONGODB_URI || LOCALDB_URI, { useNewUrlParser: true })
