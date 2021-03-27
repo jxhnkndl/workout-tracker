@@ -12,7 +12,7 @@ module.exports = (app) => {
   // Exercse route
   app.get('/exercise', (req, res) => {
     res.status(200);
-    res.sendFile(path.join(__dirname, '../public/exercse.html'));
+    res.sendFile(path.join(__dirname, '../public/exercise.html'));
   });
 
   // Stats dashboard route

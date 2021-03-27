@@ -23,7 +23,8 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Import HTML and API routes
-require('./routes/html_routes')(app);
+require('./routes/html_routes.js')(app);
+require('./routes/api_routes.js')(app);
 
 // Connect to database and start server if connection is established
 mongoose
