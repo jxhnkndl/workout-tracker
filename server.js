@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000;
 
 // Config local db path
-const LOCALDB_URI = 'mongodb://localhost/workout-test';
+const LOCALDB_URI = 'mongodb://localhost/workoutdb';
 
 // Init Express
 const app = express();
