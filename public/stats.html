@@ -13,12 +13,17 @@
     <link rel="stylesheet" href="style.css" />
     <title>Fitness Chart</title>
   </head>
+
+  <!-- NAVBAR: ROOT ONLY -->
   <nav>
     <a href="/">Fitness Tracker</a>
   </nav>
+
   <body>
     <div class="container mt">
       <h1 class="text-center">Workout Dashboard</h1>
+
+      <!-- GRAPHS -->
       <div class="row mt">
         <div class="col-md-6">
           <canvas id="canvas"></canvas>
@@ -27,6 +32,8 @@
           <canvas id="canvas2"></canvas>
         </div>
       </div>
+
+      <!-- PIE CHARTS -->
       <div class="row mt">
         <div class="col-md-6">
           <canvas id="canvas3"></canvas>
@@ -36,6 +43,7 @@
         </div>
       </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="/api.js"></script>
     <script src="/stats.js"></script>
