@@ -1,3 +1,4 @@
+// UI & Input vars
 const workoutTypeSelect = document.querySelector("#type");
 const cardioForm = document.querySelector(".cardio-form");
 const resistanceForm = document.querySelector(".resistance-form");
@@ -17,6 +18,7 @@ const newWorkout = document.querySelector(".new-workout")
 let workoutType = null;
 let shouldNavigateAway = false;
 
+// Init Workouts: Set current workout to last workout if there is one
 async function initExercise() {
   let workout;
 
@@ -32,6 +34,7 @@ async function initExercise() {
 
 initExercise();
 
+// Dynamically show/hide form inputs depending on exercise type
 function handleWorkoutTypeChange(event) {
   workoutType = event.target.value;
 
@@ -49,6 +52,7 @@ function handleWorkoutTypeChange(event) {
   validateInputs();
 }
 
+// Validate form inputs
 function validateInputs() {
   let isValid = true;
 
@@ -95,6 +99,7 @@ function validateInputs() {
   }
 }
 
+// Format input data and send POST request to API
 async function handleFormSubmit(event) {
   event.preventDefault();
 
@@ -119,6 +124,7 @@ async function handleFormSubmit(event) {
   toast.classList.add("success");
 }
 
+// Configure toast notification
 function handleToastAnimationEnd() {
   toast.removeAttribute("class");
   if (shouldNavigateAway) {
@@ -126,6 +132,7 @@ function handleToastAnimationEnd() {
   }
 }
 
+// Clear input fields
 function clearInputs() {
   cardioNameInput.value = "";
   nameInput.value = "";
@@ -137,6 +144,7 @@ function clearInputs() {
   weightInput.value = "";
 }
 
+// Event listeners for buttons and workout type input
 if (workoutTypeSelect) {
   workoutTypeSelect.addEventListener("change", handleWorkoutTypeChange);
 }
@@ -151,6 +159,7 @@ if (addButton) {
 }
 toast.addEventListener("animationend", handleToastAnimationEnd);
 
+// Attach input validation to all input fields
 document
   .querySelectorAll("input")
   .forEach(element => element.addEventListener("input", validateInputs));

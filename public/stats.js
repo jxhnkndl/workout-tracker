@@ -1,3 +1,4 @@
+// Create chart colors
 function generatePalette() {
   const arr = [
     '#003f5c',
@@ -21,6 +22,7 @@ function generatePalette() {
   return arr;
 }
 
+// Pipe workout data into charts and render on page
 function populateChart(data) {
   let durations = data.map(({ totalDuration }) => totalDuration);
   let pounds = calculateTotalWeight(data);
@@ -173,6 +175,7 @@ function populateChart(data) {
   });
 }
 
+// Calculate total weight lifted over last 7 workouts
 function calculateTotalWeight(data) {
   let totals = [];
 
@@ -191,6 +194,7 @@ function calculateTotalWeight(data) {
   return totals;
 }
 
+// Capture workout names, remove duplicates
 function workoutNames(data) {
   let workouts = [];
 

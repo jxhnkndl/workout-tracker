@@ -1,3 +1,4 @@
+// Initialize workout data on app launch
 async function initWorkout() {
   const lastWorkout = await API.getLastWorkout();
   console.log("Last workout:", lastWorkout);
@@ -19,6 +20,7 @@ async function initWorkout() {
   }
 }
 
+// Tally exercises by weight, sets, reps, and distance
 function tallyExercises(exercises) {
   const tallied = exercises.reduce((acc, curr) => {
     if (curr.type === "resistance") {
@@ -33,6 +35,7 @@ function tallyExercises(exercises) {
   return tallied;
 }
 
+// Format workout dates for display in UI
 function formatDate(date) {
   const options = {
     weekday: "long",
@@ -44,6 +47,7 @@ function formatDate(date) {
   return new Date(date).toLocaleDateString(options);
 }
 
+// Paint UI with workout summary
 function renderWorkoutSummary(summary) {
   const container = document.querySelector(".workout-stats");
 
@@ -71,6 +75,7 @@ function renderWorkoutSummary(summary) {
   });
 }
 
+// If no workouts have been logged, show this text
 function renderNoWorkoutText() {
   const container = document.querySelector(".workout-stats");
   const p = document.createElement("p");
