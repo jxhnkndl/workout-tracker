@@ -10,7 +10,7 @@ module.exports = (app) => {
       const workouts = await db.Workout.find({});
       res.json(workouts);
     } catch {
-      res.status(500).send('Error getting resource: ' + err);
+      res.status(500).json({ success: false });
     }
   });
 
@@ -28,7 +28,17 @@ module.exports = (app) => {
 
       res.json(workout);
     } catch {
-      res.status(500).send('Error updating resource: ' + err);
+      res.status(500).json({ success: false });
+    }
+  });
+
+  // POST: Create new workout document to add exercises to
+  app.post('/api/workouts', async (req, res) => {
+    try {
+      const workout = db.Workout.create(req.body);
+      res.json(workout);
+    } catch {
+      res.status(500).json({ success: false });
     }
   });
 };
