@@ -1,10 +1,10 @@
 let mongoose = require('mongoose');
 let db = require('../models');
 
-console.log(db);
-
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workoutdb', {
+mongoose.connect(process.env.MONGODB_URI || LOCALDB_URI, {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
   useFindAndModify: false,
 });
 
