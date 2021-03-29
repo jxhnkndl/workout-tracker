@@ -28,7 +28,12 @@ require('./routes/api_routes.js')(app);
 
 // Connect to database and start server if connection is established
 mongoose
-  .connect(process.env.MONGODB_URI || LOCALDB_URI, { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI || LOCALDB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
   .then(() => {
     app.listen(PORT, () => {
       console.log(`App running at http://localhost:${PORT}`);
