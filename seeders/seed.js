@@ -1,13 +1,22 @@
+// Import mongoose and models
 let mongoose = require('mongoose');
 let db = require('../models');
 
-mongoose.connect(process.env.MONGODB_URI || LOCALDB_URI, {
+// Configure environmental variables
+require('dotenv').config();
+
+// Local database connection
+const LOCALDB_URI = 'mongodb://localhost/workoutdb';
+
+// Connect to either deployed or local database to seed data
+mongoose.connect(process.env.MONGODB_URI || LOCALDB_URI,{
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false,
 });
 
+// Seed data array
 let workoutSeed = [
   {
     day: new Date(new Date().setDate(new Date().getDate() - 10)),
@@ -126,6 +135,7 @@ let workoutSeed = [
   },
 ];
 
+// When seeding, clear the collection out and repopulate it
 db.Workout.deleteMany({})
   .then(() => db.Workout.collection.insertMany(workoutSeed))
   .then((data) => {
