@@ -8,7 +8,14 @@ module.exports = (app) => {
   // GET: Get all workouts
   app.get('/api/workouts', async (req, res) => {
     try {
-      const workouts = await db.Workout.find({});
+      const workouts = await db.Workout.aggregate([{
+        $addFields: {
+          totalDuration: {
+            $sum: "$exercises.duration"
+          }
+        }
+      }]);
+
       res.json(workouts);
     } catch {
       res.status(500).json({ success: false });
