@@ -1,5 +1,6 @@
 // Import mongoose and models
 const mongoose = require('mongoose');
+const { Workout } = require('../models');
 const db = require('../models');
 
 // Create and export API router
@@ -8,6 +9,27 @@ module.exports = (app) => {
   app.get('/api/workouts', async (req, res) => {
     try {
       const workouts = await db.Workout.find({});
+      res.json(workouts);
+    } catch {
+      res.status(500).json({ success: false });
+    }
+  });
+
+  // GET: Range of workouts
+  app.get('/api/workouts/range', async (req, res) => {
+    const today = new Date();
+    const sevenDaysAgo = new Date(
+      new Date(new Date().setDate(new Date().getDate() - 7))
+    );
+
+    try {
+      const workouts = db.Workout.find({ 
+        day: { 
+          $lte: today, 
+          $gte: sevenDaysAgo 
+        }
+      });
+
       res.json(workouts);
     } catch {
       res.status(500).json({ success: false });
