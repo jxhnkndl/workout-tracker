@@ -30,12 +30,10 @@ module.exports = (app) => {
     );
 
     try {
-      const workouts = db.Workout.find({ 
-        day: { 
-          $lte: today, 
-          $gte: sevenDaysAgo 
-        }
-      });
+      const workouts = await db.Workout.aggregate([
+        { $match: { day: { $lte: today, $gte: sevenDaysAgo }}},    
+        { $addFields: { totalDuration: { $sum: "$exercises.duration"}}}
+      ]);
 
       res.json(workouts);
     } catch {
