@@ -2,3 +2,4 @@
 node_modules
 notes.txt
 sandbox.js
+.env
