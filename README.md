@@ -22,7 +22,7 @@ Visit the deployed application here: [Fitness Tracker](https://powerful-retreat-
 
 
 ## Description
-This fitness tracker offers users a simple way to track and chart their workout data. On launch, users are greeted with a snapshot containing a summary of their most recent workout. Using a clean and intuitive interface, users can then choose between creating and adding exericses to a new workout or adding additional exercises to their most recent workout. Users can then visit a workout dashboard to reveal insights and chart data points like total durations and weight lifted for workouts over the last seven days. Underneath the hood, the application uses `node.js` and `express` for handling requests and responses, `mongodb` and `mongoose.js` for data storage and management, and `html`, `css`, `semantic ui`, and `javascript`  to power the user interface.
+This fitness tracking application offers users a simple way to track and chart their workout data. On application launch, users are greeted with a snapshot containing data points from their most recent workout. Using a clean and intuitive interface, users can then choose between creating and adding exericses to a new workout or adding additional exercises to their most recent workout. Users can also visit a workout dashboard to access aggregated data points like total duration and total weight lifted charted for workouts over the last seven days. 
 
 
 ## Technologies
@@ -37,7 +37,7 @@ This fitness tracker offers users a simple way to track and chart their workout 
 
 
 ## Installation
-While the application can be visited and interacted with at it's deployment link, the project can be installed to run locally using the steps below.  
+While the application can be visited and interacted with at it's deployment link, the project can also be installed to run locally using the steps below.  
 
 This application requires Node.js and npm to run locally. To check whether Node.js and npm are installed locally, run:
 ```
@@ -48,7 +48,7 @@ npm -v
 ```
 If Node and npm are already installed, the commands above should return version numbers. Visit [Node.js](http://www.nodejs.org/) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) for full installation details and documentation.  
 
-Running this application locally requires the installation of the following **npm** modules: `express`, `mongoose`, `morgan`, `dotenv`, and `nodemon` . 
+Running this application locally requires installation of the following **npm** modules: `express`, `mongoose`, `morgan`, `dotenv`, and `nodemon` . 
 
 To install the project and its npm dependencies, navigate to the project's root directory and run:
 ```
@@ -59,17 +59,17 @@ Once all third-party packages have been successfully installed, the application 
 
 ## Local Database Setup
 
-This application uses a MongoDB database to store workout data. To run the application locally, **MongoDB** must be installed and configured locally. The deployed application uses **MongoDB Atlas** to store its data in the cloud.
+This application uses a MongoDB database to store workout data. To run the application locally, MongoDB must be installed and configured locally. The deployed application uses MongoDB Atlas to store its data in the cloud.
 
-The application uses `mongoose.js` to define and enforce a schema on documents inserted into the `workouts` collection. This Workout model can be found in `/models/Workout.js`.
+The application uses `mongoose.js` to define and enforce a schema on documents inserted into the `workouts` collection. The `Workout.js` file inside the `models` directory contains the workout schema.
 
-The application also includes a `seed.js` file in the `seeders` directory containing mock workout data. Running `npm run seed` from the project's root directory will discard any current data in the database and replace it with the file's seed data. Before running the seed file, ensure that MongoDB is installed and capable of running locally.
+The application also includes a `seed.js` file in the `seeders` directory containing mock workout data. Running `npm run seed` from the project's root directory will **remove and replace** any data currently in the `workouts` collection with the script's seed data. Before running the seed file, ensure that MongoDB is installed and capable of running locally.
 
-Each workout is written to the database as a single document. Within that document, an `exercises` array is used to store all of the workout's individual exercise objects. When a user add's an exercise to an existing workout, they are creating a new exercise object and pushing it into the larger workout document.
+Each workout is written to the database as a single document. Within that document, an `exercises` field stores an array containing all of the workout's individual exercise objects. When a user adds an exercise to an existing workout, they are actually creating a new exercise object and pushing it into the larger workout document.
 
 
 ## Usage
-Once npm packages have been installed and the database has been initialized, the application can be run using `localhost`:
+Once npm packages have been installed and the database has been initialized, the application can be run using `localhost:3000`:
 ```
 npm start
 ```
