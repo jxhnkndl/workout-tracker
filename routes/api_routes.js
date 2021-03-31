@@ -26,7 +26,7 @@ module.exports = (app) => {
   app.get('/api/workouts/range', async (req, res) => {
     const today = new Date();
     const sevenDaysAgo = new Date(
-      new Date(new Date().setDate(new Date().getDate() - 7))
+      new Date(new Date().setDate(new Date().getDate() - 6))
     );
 
     try {
