@@ -18,7 +18,7 @@
 
 
 ## Deployed Application
-Visit the deployed application here: [Fitness Tracker](https://powerful-retreat-22028.herokuapp.com/)
+Visit the deployed application here: [Fitness Tracker](https://afternoon-headland-50798.herokuapp.com/)
 
 
 ## Description
