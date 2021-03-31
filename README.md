@@ -69,11 +69,11 @@ Each workout is written to the database as a single document. Within that docume
 
 
 ## Usage
-Once npm packages have been installed and the database has been initialized, the application can be run using `localhost:3000`:
+Once npm packages have been installed and the database has been initialized, the application can be launched:
 ```
 npm start
 ```
-Or in continuous mode (server refreshes automatically if code changes):
+Or in continuous mode using `nodemon` (server refreshes automatically if code changes):
 ```
 npm run watch
 ```
